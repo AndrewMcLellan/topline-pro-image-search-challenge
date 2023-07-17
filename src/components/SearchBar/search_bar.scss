@@ -1,0 +1,16 @@
+.search-bar-root {
+  font-size: 20px;
+
+  .search-input {
+    width: 30%;
+    height: 35px;
+    font-size: inherit;
+  }
+  
+  .search-button {
+    margin-left: 20px;
+    height: 35px;
+    width: 35px;
+    font-size: 15px;
+  }
+}
