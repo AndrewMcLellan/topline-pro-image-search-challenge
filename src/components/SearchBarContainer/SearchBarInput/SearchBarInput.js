@@ -2,7 +2,7 @@ import { useState } from "react";
 import { fetchImages } from "../../../utils/fetchImages";
 
 
-const SearchBarInput = ({ handleSetResults }) => {
+const SearchBarInput = ({ handleSetResults, setError }) => {
   const [serachTerm, setSearchTerm] = useState('');
   return (
     <>
@@ -18,6 +18,7 @@ const SearchBarInput = ({ handleSetResults }) => {
         className='search-button'
         onClick={() => {
           handleSetResults(serachTerm)
+          setError('')
         }}
         disabled={!serachTerm.length}
         data-testid='test-search-button'
