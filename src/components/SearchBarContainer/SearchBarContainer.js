@@ -8,8 +8,8 @@ export const SearchBarContainer = () => {
   const [results, setResults] = useState(null);
   const [error, setError] = useState('');
 
-  const handleSetResults = async (queryString) => {
-    const { searchResults, error = ''} = await fetchImages({ q: queryString });
+  const handleSetResults = async (queryString = '', perPage) => {
+    const { searchResults, error = ''} = await fetchImages({ q: queryString, per_page: perPage });
     if (!error) {
       setResults(searchResults.hits);
     } else {
@@ -17,17 +17,22 @@ export const SearchBarContainer = () => {
     }
   }
 
+  useEffect(() => {
+    handleSetResults('', 200);
+  }, [])
+
   return (
     <div className='search-bar-root'>
       <h2>
         Search Pixabay for Images! 
       </h2>
-      <SearchBarInput handleSetResults={handleSetResults} />
+      <SearchBarInput setError={setError} handleSetResults={handleSetResults} />
+      
       {results && (
         <ImageSearchIndex searchResults={results} />
       )}
       {error && (
-        <error>{error}</error>
+        <div>{error}</div>
       )}
     </div>
   )
