@@ -6,10 +6,15 @@ import ImageSearchIndex from '../ImageSearchIndex/ImageSearchIndex';
 
 export const SearchBarContainer = () => {
   const [results, setResults] = useState(null);
+  const [error, setError] = useState('');
 
   const handleSetResults = async (queryString) => {
-    const searchResults = await fetchImages({ q: queryString });
-    setResults(searchResults.hits);
+    const { searchResults, error = ''} = await fetchImages({ q: queryString });
+    if (!error) {
+      setResults(searchResults.hits);
+    } else {
+      setError(error)
+    }
   }
 
   return (
@@ -20,6 +25,9 @@ export const SearchBarContainer = () => {
       <SearchBarInput handleSetResults={handleSetResults} />
       {results && (
         <ImageSearchIndex searchResults={results} />
+      )}
+      {error && (
+        <error>{error}</error>
       )}
     </div>
   )
