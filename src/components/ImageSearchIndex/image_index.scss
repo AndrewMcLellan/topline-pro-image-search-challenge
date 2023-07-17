@@ -1,0 +1,9 @@
+.image-list-root {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+
+  img {
+    margin-left: 8px
+  }
+}
