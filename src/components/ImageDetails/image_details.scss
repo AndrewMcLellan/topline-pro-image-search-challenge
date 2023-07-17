@@ -1,0 +1,16 @@
+.image-details-root {
+  display: flex;
+
+  .image-details-label {
+    font-weight: 600;
+    margin-right: 5px;
+    text-transform: capitalize;
+  }
+
+  .image-details-info {
+    border: solid;
+    width: 30%;
+    text-align: left;
+    padding: 10px;
+  }
+}
