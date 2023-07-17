@@ -27,7 +27,6 @@ export const SearchBarContainer = () => {
         Search Pixabay for Images! 
       </h2>
       <SearchBarInput setError={setError} handleSetResults={handleSetResults} />
-      
       {results && (
         <ImageSearchIndex searchResults={results} />
       )}
