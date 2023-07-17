@@ -1,6 +1,7 @@
 import './App.css';
 import { Routes, Route, BrowserRouter } from 'react-router-dom'
 import SearchBarContainer from './components/SearchBarContainer/SearchBarContainer';
+import ImageDetails from './components/ImageDetails/ImageDetails';
 
 function App() {
   return (
@@ -8,7 +9,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<SearchBarContainer />} />
-          {/* <Route path='/details' element={<ImageDetails />}/> */}
+          <Route path='/details' element={<ImageDetails />}/>
         </Routes>
       </BrowserRouter>
     </div>
