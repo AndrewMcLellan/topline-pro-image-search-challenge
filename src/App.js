@@ -1,13 +1,13 @@
 import './App.css';
 import { Routes, Route, BrowserRouter } from 'react-router-dom'
-import SearchBar from './components/SearchBar';
+import SearchBarContainer from './components/SearchBarContainer/SearchBarContainer';
 
 function App() {
   return (
     <div className='App'>
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<SearchBar />} />
+          <Route path='/' element={<SearchBarContainer />} />
           {/* <Route path='/details' element={<ImageDetails />}/> */}
         </Routes>
       </BrowserRouter>
