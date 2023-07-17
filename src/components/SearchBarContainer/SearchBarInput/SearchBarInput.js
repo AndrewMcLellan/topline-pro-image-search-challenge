@@ -12,6 +12,7 @@ const SearchBarInput = ({ handleSetResults }) => {
           setSearchTerm(e.target.value)
         }}
         type='text' 
+        data-testid='test-search-input'
       />
       <button 
         className='search-button'
@@ -19,6 +20,7 @@ const SearchBarInput = ({ handleSetResults }) => {
           handleSetResults(serachTerm)
         }}
         disabled={!serachTerm.length}
+        data-testid='test-search-button'
       >
         Go
       </button>
