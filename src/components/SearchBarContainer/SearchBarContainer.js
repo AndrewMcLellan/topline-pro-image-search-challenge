@@ -9,30 +9,41 @@ export const SearchBarContainer = () => {
   const [error, setError] = useState('');
 
   const handleSetResults = async (queryString = '', perPage) => {
-    const { searchResults, error = ''} = await fetchImages({ q: queryString, per_page: perPage });
+    // added per_page here becasue I was going to add an option for users to select how many results to show per page, 
+    // but I just didn't have enough time. 
+    const { searchResults, error = ''} = await fetchImages({ q: queryString, per_page: perPage }); 
     if (!error) {
-      setResults(searchResults.hits);
+      setResults(searchResults);
     } else {
       setError(error)
     }
   }
 
   useEffect(() => {
+    // provide something to be seen on page load instead of just showing the search bar.  
     handleSetResults('', 200);
   }, [])
+
+  const renderError = () => (
+    error && <div>{error}</div>
+  )
+
+  const renderResults = () => (
+    results && <ImageSearchIndex searchResults={results} />
+  )
+
+  const renderSearchBarInput = () => (
+    <SearchBarInput setError={setError} handleSetResults={handleSetResults} />
+  )
 
   return (
     <div className='search-bar-root'>
       <h2>
         Search Pixabay for Images! 
       </h2>
-      <SearchBarInput setError={setError} handleSetResults={handleSetResults} />
-      {results && (
-        <ImageSearchIndex searchResults={results} />
-      )}
-      {error && (
-        <div>{error}</div>
-      )}
+      {renderSearchBarInput()}
+      {renderResults()}
+      {renderError()}
     </div>
   )
 }
