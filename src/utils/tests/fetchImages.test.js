@@ -1,4 +1,4 @@
-import { fetchImages } from "./fetchImages";
+import { fetchImages } from "../fetchImages";
 import fetchMock from "jest-fetch-mock";
 
 fetchMock.enableMocks();
@@ -32,8 +32,7 @@ describe('fetchImages', () => {
   })
 
   it('return an error if the enpoint is invalid', async () => {
-    jest.mock('./fetchImages', () => ({
-      ...jest.requireActual('./fetchImages'),
+    jest.mock('../fetchImages', () => ({
       path: ''
     }))
 
